@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>544213703098-ucl2qpb2tidtdvu5etglcorjdi5dt9hm.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.544213703098-ucl2qpb2tidtdvu5etglcorjdi5dt9hm</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB4UJ7m4_ea3RZyZqIk0w9QruofX8rFU_g</string>
+	<key>GCM_SENDER_ID</key>
+	<string>544213703098</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.training41KahveniSecApp</string>
+	<key>PROJECT_ID</key>
+	<string>kahveni-sec-mobil-app-13b38</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kahveni-sec-mobil-app-13b38.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:544213703098:ios:458e2b44e6f00c9fb46583</string>
+	<key>DATABASE_URL</key>
+	<string>https://kahveni-sec-mobil-app-13b38.firebaseio.com</string>
+</dict>
+</plist>
