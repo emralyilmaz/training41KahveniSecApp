@@ -27,12 +27,14 @@ class _SignInState extends State<SignIn> {
               children: [
                 SizedBox(height: 20),
                 TextFormField(
+                  cursorColor: Color.fromRGBO(90, 46, 46, 1),
                   onChanged: (val) {},
                 ),
                 SizedBox(height: 20),
                 TextFormField(
                   obscureText: true, // parola için
                   onChanged: (val) {},
+                  cursorColor: Color.fromRGBO(90, 46, 46, 1),
                 ),
                 SizedBox(height: 20),
                 RaisedButton(
