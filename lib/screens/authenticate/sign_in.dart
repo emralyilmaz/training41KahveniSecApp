@@ -19,23 +19,33 @@ class _SignInState extends State<SignIn> {
         title: Text("Giriş Yapınız"),
         centerTitle: true,
       ),
-      body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
-        child: RaisedButton(
-            disabledColor: Color.fromRGBO(255, 254, 223, 1),
-            // raisebutton ile anonim giriş yyapılacak ve tek bir butona tıklaması yeterlidir.
-            child: Text(
-              "Misafir Giriş",
-              style: TextStyle(color: Color.fromRGBO(90, 46, 46, 1)),
+      body: Center(
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+          child: Form(
+            child: Column(
+              children: [
+                SizedBox(height: 20),
+                TextFormField(
+                  onChanged: (val) {},
+                ),
+                SizedBox(height: 20),
+                TextFormField(
+                  obscureText: true, // parola için
+                  onChanged: (val) {},
+                ),
+                SizedBox(height: 20),
+                RaisedButton(
+                    color: Color.fromRGBO(90, 46, 46, 1),
+                    child: Text(
+                      "Giriş",
+                      style: TextStyle(color: Color.fromRGBO(255, 254, 223, 1)),
+                    ),
+                    onPressed: () {})
+              ],
             ),
-            onPressed: () async {
-              dynamic sonuc = await _authService.signInAnonim();
-              if (sonuc == null) {
-                print("Giriş Başarısız.");
-              } else {
-                return (sonuc.uid); // uid: kullanıcıya ozel bir id
-              }
-            }),
+          ),
+        ),
       ),
     );
   }
