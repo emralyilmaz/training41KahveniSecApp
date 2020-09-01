@@ -33,7 +33,7 @@ class _SignInState extends State<SignIn> {
               if (sonuc == null) {
                 print("Giriş Başarısız.");
               } else {
-                print(sonuc.uid); // uid: kullanıcıya ozel bir id
+                return (sonuc.uid); // uid: kullanıcıya ozel bir id
               }
             }),
       ),
