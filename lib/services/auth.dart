@@ -20,4 +20,11 @@ class AuthService {
       return null;
     }
   }
+
+  Stream<Kullanici> get user {
+    // stream ile sürekli firebase ile iletişim halinde kalınması sağlanıyor.
+    return _auth.authStateChanges
+        .call()
+        .map((usr) => _firebasedenGelenKullanici(usr));
+  }
 }
