@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:training41KahveniSecApp/services/auth.dart';
 
 class SignIn extends StatefulWidget {
   @override
@@ -6,6 +7,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final AuthService _authService = AuthService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +28,14 @@ class _SignInState extends State<SignIn> {
               "Misafir Giriş",
               style: TextStyle(color: Color.fromRGBO(90, 46, 46, 1)),
             ),
-            onPressed: () {}),
+            onPressed: () async {
+              dynamic sonuc = await _authService.signInAnonim();
+              if (sonuc == null) {
+                print("Giriş Başarısız.");
+              } else {
+                print(sonuc.uid); // uid: kullanıcıya ozel bir id
+              }
+            }),
       ),
     );
   }
