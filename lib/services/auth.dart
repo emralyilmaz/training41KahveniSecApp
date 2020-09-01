@@ -13,6 +13,7 @@ class AuthService {
     try {
       UserCredential result = await _auth.signInAnonymously(); // AuthResult
       User user = result.user; // FirebaseUser
+      print(user.uid);
 
       return _firebasedenGelenKullanici(user);
     } catch (e) {
@@ -26,5 +27,13 @@ class AuthService {
     return _auth.authStateChanges
         .call()
         .map((usr) => _firebasedenGelenKullanici(usr));
+  }
+
+  Future signOut() async {
+    try {
+      return await _auth.signOut();
+    } catch (e) {
+      return null;
+    }
   }
 }
