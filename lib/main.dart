@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         // provider sayesinde de her yerde erişilebilir olacak.
         value: AuthService().user,
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: ThemeData(
             primaryColor: Color.fromRGBO(90, 46, 46, 1),

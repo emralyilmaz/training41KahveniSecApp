@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:training41KahveniSecApp/services/auth.dart';
 
-class SignIn extends StatefulWidget {
+class Register extends StatefulWidget {
   @override
-  _SignInState createState() => _SignInState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _SignInState extends State<SignIn> {
+class _RegisterState extends State<Register> {
   final AuthService _authService = AuthService();
   String email = "";
   String password = "";
@@ -18,7 +18,7 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(90, 46, 46, 1),
         elevation: 0.0, // gölgelik
-        title: Text("Giriş Yapınız"),
+        title: Text("Üye Olunuz"),
         centerTitle: true,
       ),
       body: Center(
@@ -48,7 +48,7 @@ class _SignInState extends State<SignIn> {
                 RaisedButton(
                     color: Color.fromRGBO(90, 46, 46, 1),
                     child: Text(
-                      "Giriş Yap",
+                      "Üye Ol",
                       style: TextStyle(color: Color.fromRGBO(255, 254, 223, 1)),
                     ),
                     onPressed: () {
