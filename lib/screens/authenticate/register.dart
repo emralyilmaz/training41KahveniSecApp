@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:training41KahveniSecApp/services/auth.dart';
 
 class Register extends StatefulWidget {
+  final Function toggleSayfa;
+  Register({this.toggleSayfa});
+
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -20,6 +23,15 @@ class _RegisterState extends State<Register> {
         elevation: 0.0, // gölgelik
         title: Text("Üye Olunuz"),
         centerTitle: true,
+        actions: [
+          FlatButton.icon(
+              onPressed: () {
+                widget.toggleSayfa();
+              },
+              icon: Icon(Icons.person, color: Color.fromRGBO(255, 254, 223, 1)),
+              label: Text("Giriş Yap",
+                  style: TextStyle(color: Color.fromRGBO(255, 254, 223, 1))))
+        ],
       ),
       body: Center(
         child: Container(

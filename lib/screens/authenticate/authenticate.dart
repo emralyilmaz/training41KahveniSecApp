@@ -8,11 +8,22 @@ class Authenticate extends StatefulWidget {
 }
 
 class _AuthenticateState extends State<Authenticate> {
+  bool girisYap = true;
+  void toggleSayfa() {
+    setState(() => girisYap = !girisYap);
+  }
+
   @override
   Widget build(BuildContext context) {
     // return Container(
     //   child: Text("Authenticate"),
     // );
-    return Register();
+    if (girisYap) {
+      return SignIn(
+        toggleSayfa: toggleSayfa,
+      );
+    } else {
+      return Register(toggleSayfa: toggleSayfa);
+    }
   }
 }

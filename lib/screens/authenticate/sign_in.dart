@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:training41KahveniSecApp/services/auth.dart';
 
 class SignIn extends StatefulWidget {
+  final Function toggleSayfa;
+  SignIn({this.toggleSayfa});
+
   @override
   _SignInState createState() => _SignInState();
 }
@@ -20,6 +23,16 @@ class _SignInState extends State<SignIn> {
         elevation: 0.0, // gölgelik
         title: Text("Giriş Yapınız"),
         centerTitle: true,
+        actions: [
+          FlatButton.icon(
+              onPressed: () {
+                widget.toggleSayfa();
+              },
+              icon: Icon(Icons.person_add,
+                  color: Color.fromRGBO(255, 254, 223, 1)),
+              label: Text("üye Ol",
+                  style: TextStyle(color: Color.fromRGBO(255, 254, 223, 1))))
+        ],
       ),
       body: Center(
         child: Container(
