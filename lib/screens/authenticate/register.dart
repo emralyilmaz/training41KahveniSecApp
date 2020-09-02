@@ -13,6 +13,7 @@ class _RegisterState extends State<Register> {
   final AuthService _authService = AuthService();
   String email = "";
   String password = "";
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +38,14 @@ class _RegisterState extends State<Register> {
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
           child: Form(
+            key: _formKey,
             child: Column(
               children: [
                 SizedBox(height: 20),
                 TextFormField(
+                  decoration: InputDecoration(icon: Icon(Icons.email)),
+                  validator: (val) =>
+                      val.isEmpty ? "Lütfen mail adresinizi giriniz" : null,
                   onChanged: (val) {
                     setState(() {
                       email = val;
@@ -49,6 +54,14 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 20),
                 TextFormField(
+                  decoration: InputDecoration(
+                      icon: Icon(
+                    Icons.vpn_key,
+                    color: Color.fromRGBO(90, 46, 46, 1),
+                  )),
+                  validator: (val) => val.length < 6
+                      ? "Parola 6 karakterden fazla olmalı"
+                      : null,
                   obscureText: true, // parola için
                   onChanged: (val) {
                     setState(() {
@@ -64,7 +77,9 @@ class _RegisterState extends State<Register> {
                       style: TextStyle(color: Color.fromRGBO(255, 254, 223, 1)),
                     ),
                     onPressed: () {
-                      print("$email ve $password");
+                      if (_formKey.currentState.validate()) {
+                        print("$email ve $password");
+                      }
                     })
               ],
             ),
