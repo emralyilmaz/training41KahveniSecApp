@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:training41KahveniSecApp/services/auth.dart';
+import 'package:training41KahveniSecApp/shared/contants.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleSayfa;
@@ -31,7 +32,7 @@ class _SignInState extends State<SignIn> {
               },
               icon: Icon(Icons.person_add,
                   color: Color.fromRGBO(255, 254, 223, 1)),
-              label: Text("üye Ol",
+              label: Text("Üye Ol",
                   style: TextStyle(color: Color.fromRGBO(255, 254, 223, 1))))
         ],
       ),
@@ -43,7 +44,7 @@ class _SignInState extends State<SignIn> {
               children: [
                 SizedBox(height: 20),
                 TextFormField(
-                  decoration: InputDecoration(icon: Icon(Icons.email)),
+                  decoration: inputDecoration,
                   onChanged: (val) {
                     setState(() {
                       email = val;
@@ -52,11 +53,8 @@ class _SignInState extends State<SignIn> {
                 ),
                 SizedBox(height: 20),
                 TextFormField(
-                  decoration: InputDecoration(
-                      icon: Icon(
-                    Icons.vpn_key,
-                    color: Color.fromRGBO(90, 46, 46, 1),
-                  )),
+                  decoration: inputDecoration.copyWith(
+                      hintText: "Parola", icon: Icon(Icons.vpn_key)),
                   obscureText: true, // parola için
                   onChanged: (val) {
                     setState(() {

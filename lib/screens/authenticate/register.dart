@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:training41KahveniSecApp/services/auth.dart';
+import 'package:training41KahveniSecApp/shared/contants.dart';
 
 class Register extends StatefulWidget {
   final Function toggleSayfa;
@@ -45,7 +46,7 @@ class _RegisterState extends State<Register> {
               children: [
                 SizedBox(height: 20),
                 TextFormField(
-                  decoration: InputDecoration(icon: Icon(Icons.email)),
+                  decoration: inputDecoration,
                   validator: (val) =>
                       val.isEmpty ? "Lütfen mail adresinizi giriniz" : null,
                   onChanged: (val) {
@@ -56,11 +57,8 @@ class _RegisterState extends State<Register> {
                 ),
                 SizedBox(height: 20),
                 TextFormField(
-                  decoration: InputDecoration(
-                      icon: Icon(
-                    Icons.vpn_key,
-                    color: Color.fromRGBO(90, 46, 46, 1),
-                  )),
+                  decoration: inputDecoration.copyWith(
+                      hintText: "Parola", icon: Icon(Icons.vpn_key)),
                   validator: (val) =>
                       val.length < 6 ? "Parola en az 6 karakter olmalı" : null,
                   obscureText: true, // parola için
