@@ -15,6 +15,8 @@ class _RegisterState extends State<Register> {
   String password = "";
   final _formKey = GlobalKey<FormState>();
 
+  String error = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,9 +61,8 @@ class _RegisterState extends State<Register> {
                     Icons.vpn_key,
                     color: Color.fromRGBO(90, 46, 46, 1),
                   )),
-                  validator: (val) => val.length < 6
-                      ? "Parola 6 karakterden fazla olmalı"
-                      : null,
+                  validator: (val) =>
+                      val.length < 6 ? "Parola en az 6 karakter olmalı" : null,
                   obscureText: true, // parola için
                   onChanged: (val) {
                     setState(() {
@@ -76,11 +77,25 @@ class _RegisterState extends State<Register> {
                       "Üye Ol",
                       style: TextStyle(color: Color.fromRGBO(255, 254, 223, 1)),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       if (_formKey.currentState.validate()) {
-                        print("$email ve $password");
+                        // print("$email ve $password");
+                        dynamic sonuc = _authService.register(email, password);
+                        if (sonuc == null) {
+                          setState(() {
+                            error =
+                                "Lütfen geçerli bir mail adresi ya da parola giriniz.";
+                          });
+                        }
                       }
-                    })
+                    }),
+                SizedBox(
+                  height: 15.0,
+                ),
+                Text(
+                  error,
+                  style: TextStyle(fontSize: 15.0),
+                )
               ],
             ),
           ),

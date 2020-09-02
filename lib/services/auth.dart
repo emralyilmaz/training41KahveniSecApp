@@ -36,4 +36,17 @@ class AuthService {
       return null;
     }
   }
+
+  Future register(String mail, String parola) async {
+    try {
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
+          email: mail, password: parola);
+
+      User user = result.user;
+      return _firebasedenGelenKullanici(user);
+    } catch (error) {
+      print(error.toString());
+      return null;
+    }
+  }
 }
