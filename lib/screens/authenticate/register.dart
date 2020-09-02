@@ -80,7 +80,8 @@ class _RegisterState extends State<Register> {
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         // print("$email ve $password");
-                        dynamic sonuc = _authService.register(email, password);
+                        dynamic sonuc =
+                            await _authService.register(email, password);
                         if (sonuc == null) {
                           setState(() {
                             error =
