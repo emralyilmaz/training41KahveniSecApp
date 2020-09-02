@@ -49,4 +49,17 @@ class AuthService {
       return null;
     }
   }
+
+  Future singIn(String mail, String parola) async {
+    try {
+      UserCredential result = await _auth.signInWithEmailAndPassword(
+          email: mail.trim(), password: parola.trim());
+
+      User user = result.user;
+      return _firebasedenGelenKullanici(user);
+    } catch (error) {
+      print(error.toString());
+      return null;
+    }
+  }
 }

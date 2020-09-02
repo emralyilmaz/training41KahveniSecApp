@@ -13,6 +13,7 @@ class _SignInState extends State<SignIn> {
   final AuthService _authService = AuthService();
   String email = "";
   String password = "";
+  String error = "";
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +43,7 @@ class _SignInState extends State<SignIn> {
               children: [
                 SizedBox(height: 20),
                 TextFormField(
+                  decoration: InputDecoration(icon: Icon(Icons.email)),
                   onChanged: (val) {
                     setState(() {
                       email = val;
@@ -50,6 +52,11 @@ class _SignInState extends State<SignIn> {
                 ),
                 SizedBox(height: 20),
                 TextFormField(
+                  decoration: InputDecoration(
+                      icon: Icon(
+                    Icons.vpn_key,
+                    color: Color.fromRGBO(90, 46, 46, 1),
+                  )),
                   obscureText: true, // parola için
                   onChanged: (val) {
                     setState(() {
@@ -64,9 +71,30 @@ class _SignInState extends State<SignIn> {
                       "Giriş Yap",
                       style: TextStyle(color: Color.fromRGBO(255, 254, 223, 1)),
                     ),
-                    onPressed: () {
-                      print("$email ve $password");
-                    })
+                    onPressed: () async {
+                      bool emailValid = RegExp(
+                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                          .hasMatch(email);
+
+                      if (!emailValid) {
+                        setState(() {
+                          error = "Lütfen Email adresinizi kontrol ediniz!";
+                        });
+
+                        return;
+                      }
+
+                      dynamic sonuc =
+                          await _authService.singIn(email, password);
+                      if (sonuc == null) {
+                        error = "Giriş başarısız";
+                      }
+                      // print("$email ve $password");
+                    }),
+                SizedBox(
+                  height: 15.0,
+                ),
+                Text(error),
               ],
             ),
           ),
