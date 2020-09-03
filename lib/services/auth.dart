@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:training41KahveniSecApp/models/user.dart';
+import 'package:training41KahveniSecApp/services/database.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -43,6 +44,8 @@ class AuthService {
           email: mail, password: parola);
 
       User user = result.user;
+      await DatabaseService(uid: user.uid)
+          .veriGuncelle("yeni kullanıcı", "0", 0);
       return _firebasedenGelenKullanici(user);
     } catch (error) {
       print(error.toString());
