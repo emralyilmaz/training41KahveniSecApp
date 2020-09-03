@@ -12,7 +12,7 @@ class _SettingFormState extends State<SettingForm> {
 
   String currentIsim;
   String currentSeker;
-  String currentKoyuluk;
+  int currentKoyuluk;
 
   @override
   Widget build(BuildContext context) {
@@ -36,12 +36,36 @@ class _SettingFormState extends State<SettingForm> {
           SizedBox(
             height: 10.0,
           ),
+          DropdownButtonFormField(
+            items: sekerler.map((seker) {
+              return DropdownMenuItem(
+                value: seker,
+                child: Text("$seker şeker"),
+              );
+            }).toList(),
+            onChanged: (val) => setState(() => currentSeker = val),
+            decoration: inputDecoration.copyWith(
+                icon: Icon(Icons.format_color_fill,
+                    color: Color.fromRGBO(90, 46, 46, 1))),
+            value: currentSeker ?? "0",
+          ),
+          Slider(
+            value: (currentKoyuluk ?? 100).toDouble(),
+            min: 100,
+            max: 900,
+            divisions: 8,
+            onChanged: (val) => setState(() => currentKoyuluk = val.round()),
+            activeColor: Colors.brown[currentKoyuluk ?? 100],
+            inactiveColor: Colors.brown[currentKoyuluk ?? 100],
+          ),
           RaisedButton(
               color: Color.fromRGBO(90, 46, 46, 1),
               child: Text("Güncelle",
                   style: TextStyle(color: Color.fromRGBO(255, 254, 223, 1))),
               onPressed: () async {
                 print(currentIsim);
+                print(currentSeker);
+                print(currentKoyuluk);
               })
         ],
       ),
