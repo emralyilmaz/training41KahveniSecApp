@@ -12,4 +12,9 @@ class DatabaseService {
         .doc(uid)
         .set({"seker": seker, "isim": isim, "koyuluk": koyuluk});
   }
+
+  Stream<QuerySnapshot> get siparisler {
+    return siparisCollection
+        .snapshots(); // snapshots ile siparişler kısmı getiriliyor.
+  }
 }
