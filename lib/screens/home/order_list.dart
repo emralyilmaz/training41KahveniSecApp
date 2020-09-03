@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:training41KahveniSecApp/models/order.dart';
+import 'package:training41KahveniSecApp/screens/home/order_tile.dart';
 
 class SiparisList extends StatefulWidget {
   @override
@@ -18,6 +19,12 @@ class _SiparisListState extends State<SiparisList> {
       print(siparis.seker);
       print(siparis.koyuluk);
     });
-    return Container();
+    return ListView.builder(
+        itemCount: siparisler.length,
+        itemBuilder: (context, index) {
+          return SiparisTile(
+            siparis: siparisler[index],
+          );
+        });
   }
 }
