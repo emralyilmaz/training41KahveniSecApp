@@ -1,6 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:training41KahveniSecApp/models/order.dart';
 import 'package:training41KahveniSecApp/screens/home/order_list.dart';
 import 'package:training41KahveniSecApp/services/auth.dart';
 import 'package:training41KahveniSecApp/services/database.dart';
@@ -14,7 +15,7 @@ class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<QuerySnapshot>.value(
+    return StreamProvider<List<Siparis>>.value(
       value: DatabaseService().siparisler,
       child: Scaffold(
         backgroundColor: Color.fromRGBO(223, 186, 105, 1),

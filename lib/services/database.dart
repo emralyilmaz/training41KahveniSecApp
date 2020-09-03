@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:training41KahveniSecApp/models/order.dart';
 
 class DatabaseService {
   final String uid;
@@ -13,8 +14,19 @@ class DatabaseService {
         .set({"seker": seker, "isim": isim, "koyuluk": koyuluk});
   }
 
-  Stream<QuerySnapshot> get siparisler {
-    return siparisCollection
-        .snapshots(); // snapshots ile siparişler kısmı getiriliyor.
+  List<Siparis> _snapshottanGelenSiparis(QuerySnapshot snap) {
+    return snap.docs.map((doc) {
+      var docFunc = doc.data();
+      return Siparis(
+        isim: docFunc['isim'] ?? "",
+        seker: docFunc['seker'] ?? "0",
+        koyuluk: docFunc['koyuluk'] ?? 0,
+      );
+    }).toList();
+  }
+
+  Stream<List<Siparis>> get siparisler {
+    return siparisCollection.snapshots().map(
+        _snapshottanGelenSiparis); // snapshots ile siparişler kısmı getiriliyor.
   }
 }
