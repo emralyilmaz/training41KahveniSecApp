@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:training41KahveniSecApp/models/order.dart';
+import 'package:training41KahveniSecApp/models/user.dart';
 
 class DatabaseService {
   final String uid;
@@ -28,5 +29,21 @@ class DatabaseService {
   Stream<List<Siparis>> get siparisler {
     return siparisCollection.snapshots().map(
         _snapshottanGelenSiparis); // snapshots ile siparişler kısmı getiriliyor.
+  }
+
+  KullaniciVeriler _snapshottanGelenKullaniciVerileri(DocumentSnapshot snap) {
+    return KullaniciVeriler(
+      uid: uid,
+      isim: snap.data()["isim"],
+      seker: snap.data()["seker"],
+      koyuluk: snap.data()["koyuluk"],
+    );
+  }
+
+  Stream<KullaniciVeriler> get kullaniciVerileri {
+    return siparisCollection
+        .doc(uid)
+        .snapshots()
+        .map(_snapshottanGelenKullaniciVerileri);
   }
 }
