@@ -15,6 +15,17 @@ class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {
+    void ayarlarPaneliniGoster() {
+      showModalBottomSheet(
+          context: context,
+          builder: (context) {
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 60.0),
+              child: Text("Ayarlar"),
+            );
+          });
+    }
+
     return StreamProvider<List<Siparis>>.value(
       value: DatabaseService().siparisler,
       child: Scaffold(
@@ -27,6 +38,12 @@ class _HomeState extends State<Home> {
           ),
           actions: [
             FlatButton.icon(
+                onPressed: () => ayarlarPaneliniGoster(),
+                icon: Icon(Icons.settings,
+                    color: Color.fromRGBO(255, 254, 223, 1)),
+                label: Text("Ayarlar",
+                    style: TextStyle(color: Color.fromRGBO(255, 254, 223, 1)))),
+            FlatButton.icon(
                 onPressed: () async {
                   await _auth.signOut();
                 },
@@ -35,7 +52,7 @@ class _HomeState extends State<Home> {
                   color: Color.fromRGBO(255, 254, 223, 1),
                 ),
                 label: Text("Çıkış",
-                    style: TextStyle(color: Color.fromRGBO(255, 254, 223, 1))))
+                    style: TextStyle(color: Color.fromRGBO(255, 254, 223, 1)))),
           ],
         ),
         body: SiparisList(),
